@@ -16,7 +16,6 @@
             </form>
         </div>
     </nav>
-
     <div class="container">
 
       <h1>Pagina principal</h1>
@@ -24,6 +23,12 @@
       <% if( login){ %>
         <h1>El usuario es : <strong> <%= name %> </strong> </h1>
         <a href="logout" type="button" class="btn btn-outline-danger" onclick="return confirm('Seguro que desea Cerrar sesion?')">Cerrar Sesion</a>
+        <BR></BR>
+        <a href="/productos" type="button" class="btn btn-outline-success">Productos</a>
+        <BR></BR>
+        <a href="/carrito" type="button" class="btn btn-outline-primary">Carrito</a>
+        <BR></BR>
+        
       <% } else {%>
 
         <strong> <%= name %> </strong>

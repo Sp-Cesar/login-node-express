@@ -2,6 +2,15 @@ const express = require('express');
 const router = express.Router();
 const conexion = require('./models/db');
 
+function checkAuth(req,res,next){
+    if(req.session.loggedin){
+        next();
+    }else{
+        res.redirect('/login');
+    }
+}
+
+
 router.get('/', (req,res)=>{
     if(req.session.loggedin){
         res.render('index',{
@@ -28,6 +37,12 @@ router.get('/logout', (req,res)=>{
     req.session.destroy(()=>{
         res.redirect('/')
     })
+})
+router.get('/productos', checkAuth, (req,res)=>{
+    res.render('productos');
+})
+router.get('/carrito', checkAuth, (req,res)=>{
+    res.render('carrito');
 })
 
 
